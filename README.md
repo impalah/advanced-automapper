@@ -8,13 +8,13 @@ Object automapper based on type hints.
 Using pip:
 
 ```bash
-pip install pyautomapper
+pip install advanced-automapper
 ```
 
 Using poetry
 
 ```bash
-poetry pyautomapper
+poetry advanced-automapper
 ```
 
 
