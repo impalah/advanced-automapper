@@ -1,9 +1,9 @@
-.. pyautomapper documentation master file, created by
+.. advanced-automapper documentation master file, created by
    sphinx-quickstart on Fri Apr  5 22:23:20 2024.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to PyAutomapper's documentation!
+Welcome to advanced-automapper's documentation!
 ===========================================
 
 .. toctree::
