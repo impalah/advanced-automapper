@@ -1,6 +1,6 @@
-# pyautomapper
+# advanced-automapper
 
-Object autommaper based on type hints.
+Object automapper based on type hints.
 
 
 ## Installation

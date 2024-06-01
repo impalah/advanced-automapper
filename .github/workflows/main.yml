@@ -1,4 +1,4 @@
-name: pyautomapper
+name: advanced-automapper
 
 on:
   push:

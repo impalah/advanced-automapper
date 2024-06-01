@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "pyautomapper"
+name = "advanced-automapper"
 version = "0.1.2"
 description = "Object mapper based on type hints"
 authors = ["impalah <impalah@gmail.com>"]
 readme = "README.md"
 packages = [{include = "automapper", from = "src"}]
 license = "MIT"
-homepage = "https://impalah.github.io/pyatomapper/"
-repository = "https://github.com/impalah/pyautomapper"
-documentation = "https://impalah.github.io/pyautomapper/"
+homepage = "https://impalah.github.io/advanced-automapper/"
+repository = "https://github.com/impalah/advanced-automapper"
+documentation = "https://impalah.github.io/advanced-automapper/"
 keywords = ["mapper", "typehints", "python"]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -40,5 +40,5 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.urls]
-"Documentation" = "https://impalah.github.io/pyautomapper/"
-"Source" = "https://github.com/impalah/pyautomapper"
+"Documentation" = "https://impalah.github.io/advanced-automapper/"
+"Source" = "https://github.com/impalah/advanced-automapper"

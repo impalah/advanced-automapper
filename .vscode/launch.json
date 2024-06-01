@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Python: Current File - PyAutomapper",
+      "name": "Python: Current File - advanced-automapper",
       "type": "debugpy",
       "request": "launch",
       "program": "${file}",
@@ -13,7 +13,7 @@
       "justMyCode": false
     },
     {
-      "name": "Pytest - PyAutomapper",
+      "name": "Pytest - advanced-automapper",
       "type": "debugpy",
       "request": "launch",
       "module": "pytest",
@@ -22,7 +22,7 @@
       "justMyCode": false
     },
     {
-      "name": "MyPy - PyAutomapper",
+      "name": "MyPy - advanced-automapper",
       "type": "debugpy",
       "request": "launch",
       "module": "mypy",
