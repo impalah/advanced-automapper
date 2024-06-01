@@ -11,13 +11,13 @@ Using pip:
 
 .. code-block:: bash
 
-   pip install pyautomapper
+   pip install advanced-automapper
 
 Using poetry
 
 .. code-block:: bash
 
-   poetry pyautomapper
+   poetry advanced-automapper
 
 Get started
 ===========
