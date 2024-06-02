@@ -50,11 +50,6 @@
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">User Guide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Mapper</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#automapper.mapper.DefaultMapper"><code class="docutils literal notranslate"><span class="pre">DefaultMapper</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#automapper.mapper.DefaultMapper.can_handle"><code class="docutils literal notranslate"><span class="pre">DefaultMapper.can_handle()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#automapper.mapper.DefaultMapper.get_source_fields"><code class="docutils literal notranslate"><span class="pre">DefaultMapper.get_source_fields()</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="#automapper.mapper.Mapper"><code class="docutils literal notranslate"><span class="pre">Mapper</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#automapper.mapper.Mapper.add_custom_mapping"><code class="docutils literal notranslate"><span class="pre">Mapper.add_custom_mapping()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#automapper.mapper.Mapper.get_source_fields"><code class="docutils literal notranslate"><span class="pre">Mapper.get_source_fields()</span></code></a></li>
@@ -62,16 +57,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#automapper.mapper.Mapper.map_dict"><code class="docutils literal notranslate"><span class="pre">Mapper.map_dict()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#automapper.mapper.Mapper.map_enum"><code class="docutils literal notranslate"><span class="pre">Mapper.map_enum()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#automapper.mapper.Mapper.map_list"><code class="docutils literal notranslate"><span class="pre">Mapper.map_list()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#automapper.mapper.MappingPlugin"><code class="docutils literal notranslate"><span class="pre">MappingPlugin</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#automapper.mapper.MappingPlugin.can_handle"><code class="docutils literal notranslate"><span class="pre">MappingPlugin.can_handle()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#automapper.mapper.MappingPlugin.get_source_fields"><code class="docutils literal notranslate"><span class="pre">MappingPlugin.get_source_fields()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#automapper.mapper.SqlAlchemyMapper"><code class="docutils literal notranslate"><span class="pre">SqlAlchemyMapper</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#automapper.mapper.SqlAlchemyMapper.can_handle"><code class="docutils literal notranslate"><span class="pre">SqlAlchemyMapper.can_handle()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#automapper.mapper.SqlAlchemyMapper.get_source_fields"><code class="docutils literal notranslate"><span class="pre">SqlAlchemyMapper.get_source_fields()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -110,41 +95,6 @@
   <section id="module-automapper.mapper">
 <span id="mapper"></span><h1>Mapper<a class="headerlink" href="#module-automapper.mapper" title="Link to this heading"></a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="automapper.mapper.DefaultMapper">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">automapper.mapper.</span></span><span class="sig-name descname"><span class="pre">DefaultMapper</span></span><a class="headerlink" href="#automapper.mapper.DefaultMapper" title="Link to this definition"></a></dt>
-<dd><p>Default plugin for the mapping</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>MappingPlugin (_type_): _description_</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="automapper.mapper.DefaultMapper.can_handle">
-<span class="sig-name descname"><span class="pre">can_handle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TSource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TTarget</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#automapper.mapper.DefaultMapper.can_handle" title="Link to this definition"></a></dt>
-<dd><p>Determines if the plugin can handle the mapping</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>source (TSource): type of the source object
-target (TTarget): type of the target object</p>
-</dd>
-<dt>Returns:</dt><dd><p>bool: _description_</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="automapper.mapper.DefaultMapper.get_source_fields">
-<span class="sig-name descname"><span class="pre">get_source_fields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TSource</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#automapper.mapper.DefaultMapper.get_source_fields" title="Link to this definition"></a></dt>
-<dd><p>Returns the fields of the source object</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>source (TSource): type of the source object</p>
-</dd>
-<dt>Returns:</dt><dd><p>Dict[str, Type]: _description_</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
 <dt class="sig sig-object py" id="automapper.mapper.Mapper">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">automapper.mapper.</span></span><span class="sig-name descname"><span class="pre">Mapper</span></span><a class="headerlink" href="#automapper.mapper.Mapper" title="Link to this definition"></a></dt>
 <dd><p>Class that maps objects from one class to another based on the type hints</p>
@@ -166,7 +116,7 @@ target_field (str): name of the target field</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="automapper.mapper.Mapper.get_source_fields">
-<span class="sig-name descname"><span class="pre">get_source_fields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TSource</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#automapper.mapper.Mapper.get_source_fields" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_source_fields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TSource</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#automapper.mapper.Mapper.get_source_fields" title="Link to this definition"></a></dt>
 <dd><p>Get the fields of the source object and map them to their types</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>source (TSource): source object</p>
@@ -204,7 +154,7 @@ target_inner_type (Type): _description_</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="automapper.mapper.Mapper.map_enum">
-<span class="sig-name descname"><span class="pre">map_enum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TSourceValue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_field_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#automapper.mapper.Mapper.map_enum" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">map_enum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Enum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_field_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#automapper.mapper.Mapper.map_enum" title="Link to this definition"></a></dt>
 <dd><p>Map an Enum value to another Enum of the target field type</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>source_value (_type_): _description_
@@ -224,76 +174,6 @@ target_field_type (_type_): _description_</p>
 target_inner_type (Type): _description_</p>
 </dd>
 <dt>Returns:</dt><dd><p>List | None: _description_</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="automapper.mapper.MappingPlugin">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">automapper.mapper.</span></span><span class="sig-name descname"><span class="pre">MappingPlugin</span></span><a class="headerlink" href="#automapper.mapper.MappingPlugin" title="Link to this definition"></a></dt>
-<dd><p>Defines the interface for a mapping plugin</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>ABC (_type_): _description_</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="automapper.mapper.MappingPlugin.can_handle">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">can_handle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TSource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TTarget</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#automapper.mapper.MappingPlugin.can_handle" title="Link to this definition"></a></dt>
-<dd><p>Determines if the plugin can handle the mapping</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>source (TSource): type of the source object
-target (TTarget): type of the target object</p>
-</dd>
-<dt>Returns:</dt><dd><p>bool: _description_</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="automapper.mapper.MappingPlugin.get_source_fields">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_source_fields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TSource</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#automapper.mapper.MappingPlugin.get_source_fields" title="Link to this definition"></a></dt>
-<dd><p>Returns the fields of the source object</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>source (TSource): type of the source object</p>
-</dd>
-<dt>Returns:</dt><dd><p>Dict[str, Type]: _description_</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="automapper.mapper.SqlAlchemyMapper">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">automapper.mapper.</span></span><span class="sig-name descname"><span class="pre">SqlAlchemyMapper</span></span><a class="headerlink" href="#automapper.mapper.SqlAlchemyMapper" title="Link to this definition"></a></dt>
-<dd><p>SqlAlchemy plugin for the mapping</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>MappingPlugin (_type_): _description_</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="automapper.mapper.SqlAlchemyMapper.can_handle">
-<span class="sig-name descname"><span class="pre">can_handle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TSource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TTarget</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#automapper.mapper.SqlAlchemyMapper.can_handle" title="Link to this definition"></a></dt>
-<dd><p>Determines if the plugin can handle the mapping</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>source (TSource): type of the source object
-target (TTarget): type of the target object</p>
-</dd>
-<dt>Returns:</dt><dd><p>bool: _description_</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="automapper.mapper.SqlAlchemyMapper.get_source_fields">
-<span class="sig-name descname"><span class="pre">get_source_fields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TSource</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#automapper.mapper.SqlAlchemyMapper.get_source_fields" title="Link to this definition"></a></dt>
-<dd><p>Returns the fields of the source object</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>source (TSource): type of the source object</p>
-</dd>
-<dt>Returns:</dt><dd><p>Dict[str, Type]: _description_</p>
 </dd>
 </dl>
 </dd></dl>
