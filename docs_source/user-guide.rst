@@ -17,7 +17,7 @@ Using poetry
 
 .. code-block:: bash
 
-   poetry advanced-automapper
+   poetry add advanced-automapper
 
 Get started
 ===========
@@ -34,9 +34,8 @@ To create a PersonAlchemy object:
 
 .. code-block:: python
 
-   from automapper import Mapper
+   from automapper import mapper
 
-   mapper = Mapper()
    mapped_person = mapper.map(person, PersonAlchemy)
 
    print(mapped_person)
@@ -56,9 +55,8 @@ The solution is to add a cutom mapping in the Mapper relating the field "gender"
 
 .. code-block:: python
 
-   from automapper import Mapper
+   from automapper import mapper
 
-   mapper = Mapper()
    mapper.add_custom_mapping(PersonPydantic, "gender", "genero")
 
    mapped_person = mapper.map(person, PersonAlchemy)

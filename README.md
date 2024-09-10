@@ -2,7 +2,6 @@
 
 Object automapper based on type hints.
 
-
 ## Installation
 
 Using pip:
@@ -14,16 +13,14 @@ pip install advanced-automapper
 Using poetry
 
 ```bash
-poetry advanced-automapper
+poetry add advanced-automapper
 ```
-
 
 ## Get started
 
 It is important to note that PyAutomapper requieres that both origin and destination classes have have type hints to define the type for every field.
 
 Let's say you have a Pydantic model called Person, and you need to map it to a SqlAlchmey model to save it to a database:
-
 
 ```python
 
@@ -79,16 +76,15 @@ person = PersonPydantic(name="John", age=25, gender=GenderPydantic.MALE)
 
 To create a PersonAlchemy object:
 
-
 ```python
-from automapper import Mapper
+from automapper import mapper
 
-mapper = Mapper()
 mapped_person = mapper.map(person, PersonAlchemy)
 
 print(mapped_person)
 
 ```
+
 ## Add custom mapping
 
 PyAutomapper allows to map fields with different names between them using custom mapping.
@@ -151,9 +147,8 @@ The solution is to add a cutom mapping in the Mapper relating the field "gender"
 
 ```python
 
-from automapper import Mapper
+from automapper import mapper
 
-mapper = Mapper()
 mapper.add_custom_mapping(PersonPydantic, "gender", "genero")
 
 mapped_person = mapper.map(person, PersonAlchemy)
@@ -165,5 +160,3 @@ print(mapped_person)
 ## More examples
 
 The tests folder in the code repository contains examples of mapping between different python objects.
-
-
