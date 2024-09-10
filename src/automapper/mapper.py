@@ -188,3 +188,7 @@ class Mapper:
             if source_value.name in target_field_type.__members__:
                 return target_field_type
         return None
+
+
+# Init the singleton instance
+mapper = Mapper()
