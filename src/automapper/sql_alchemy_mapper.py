@@ -15,7 +15,7 @@ class SqlAlchemyMapper(MappingPlugin):
     """
 
     def can_handle(self, source: TSource, target: TTarget) -> bool:
-        return isinstance(source.__class__, DeclarativeMeta)
+        return isinstance(source, DeclarativeMeta)
 
     def get_source_fields(self, source: Any) -> Dict[str, Type]:
         return {key: value for key, value in source.__mapper__.c.items()}
