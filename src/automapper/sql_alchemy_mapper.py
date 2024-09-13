@@ -1,7 +1,6 @@
 from typing import Any, Dict, Type
 
 from sqlalchemy.ext.declarative import DeclarativeMeta
-from sqlalchemy.orm import DeclarativeMeta
 
 from automapper.mapping_plugin import MappingPlugin
 from automapper.types import TSource, TTarget
