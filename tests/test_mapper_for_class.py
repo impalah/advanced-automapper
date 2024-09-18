@@ -27,6 +27,7 @@ from .types.sqlalchemy_models import FamilyAlchemy, GenderAlchemy, PersonAlchemy
 def test_basic_to_dataclass():
 
     # Arrange
+    master = Person(name="Chief", age=99, gender=Gender.OTHER)
     person = Person(name="John", age=25, gender=Gender.MALE)
     person2 = Person(name="Jane", age=25, gender=Gender.FEMALE)
     pet1 = Pet(name="Rex", age=5, species="Dog")
@@ -36,6 +37,7 @@ def test_basic_to_dataclass():
         members=[person, person2],
         name="Doe",
         pets={"dog": pet1, "cat": pet2, "bird": pet3},
+        master=master,
     )
     clan = Clan(families=[family], name="Smith")
 
@@ -54,9 +56,10 @@ def test_basic_to_dataclass():
     assert isinstance(mapped_clan.families[0].pets["dog"], PetDataclass)
 
 
-def test_basic_to_pydantic():
+def test_basic_family_to_pydantic():
 
     # Arrange
+    master = Person(name="Chief", age=99, gender=Gender.OTHER)
     person = Person(name="John", age=25, gender=Gender.MALE)
     person2 = Person(name="Jane", age=25, gender=Gender.FEMALE)
     pet1 = Pet(name="Rex", age=5, species="Dog")
@@ -66,6 +69,36 @@ def test_basic_to_pydantic():
         members=[person, person2],
         name="Doe",
         pets={"dog": pet1, "cat": pet2, "bird": pet3},
+        master=master,
+    )
+
+    # Act
+    mapper = Mapper()
+    mapped_family = mapper.map(family, FamilyPydantic)
+
+    # Assert
+    assert isinstance(mapped_family, FamilyPydantic)
+    assert isinstance(mapped_family.master, PersonPydantic)
+    assert isinstance(mapped_family.members[0], PersonPydantic)
+    assert isinstance(mapped_family.members[0].gender, GenderPydantic)
+    assert mapped_family.members[0].gender == GenderPydantic.MALE
+    assert isinstance(mapped_family.pets["dog"], PetPydantic)
+
+
+def test_basic_to_pydantic():
+
+    # Arrange
+    master = Person(name="Chief", age=99, gender=Gender.OTHER)
+    person = Person(name="John", age=25, gender=Gender.MALE)
+    person2 = Person(name="Jane", age=25, gender=Gender.FEMALE)
+    pet1 = Pet(name="Rex", age=5, species="Dog")
+    pet2 = Pet(name="Whiskers", age=3, species="Cat")
+    pet3 = Pet(name="Tweety", age=2, species="Bird")
+    family = Family(
+        members=[person, person2],
+        name="Doe",
+        pets={"dog": pet1, "cat": pet2, "bird": pet3},
+        master=master,
     )
     clan = Clan(families=[family], name="Smith")
 

@@ -27,6 +27,7 @@ from .types.sqlalchemy_models import FamilyAlchemy, GenderAlchemy, PersonAlchemy
 def test_pydantic_to_sqlalchemy():
 
     # Arrange
+    master = PersonPydantic(name="Chief", age=99, gender=GenderPydantic.OTHER)
     person = PersonPydantic(name="John", age=25, gender=GenderPydantic.MALE)
     person2 = PersonPydantic(name="Jane", age=25, gender=GenderPydantic.FEMALE)
     pet1 = PetPydantic(name="Rex", age=5, species="Dog")
@@ -36,6 +37,7 @@ def test_pydantic_to_sqlalchemy():
         members=[person, person2],
         name="Doe",
         pets={"dog": pet1, "cat": pet2, "bird": pet3},
+        master=master,
     )
 
     # Act
@@ -49,6 +51,7 @@ def test_pydantic_to_sqlalchemy():
 def test_pydantic_to_dataclass():
 
     # Arrange
+    master = PersonPydantic(name="Chief", age=99, gender=GenderPydantic.OTHER)
     person = PersonPydantic(name="John", age=25, gender=GenderPydantic.MALE)
     person2 = PersonPydantic(name="Jane", age=25, gender=GenderPydantic.FEMALE)
     pet1 = PetPydantic(name="Rex", age=5, species="Dog")
@@ -58,6 +61,7 @@ def test_pydantic_to_dataclass():
         members=[person, person2],
         name="Doe",
         pets={"dog": pet1, "cat": pet2, "bird": pet3},
+        master=master,
     )
     clan = ClanPydantic(families=[family], name="Smith")
 
@@ -78,6 +82,7 @@ def test_pydantic_to_dataclass():
 def test_pydantic_to_basic():
 
     # Arrange
+    master = PersonPydantic(name="Chief", age=99, gender=GenderPydantic.OTHER)
     person = PersonPydantic(name="John", age=25, gender=GenderPydantic.MALE)
     person2 = PersonPydantic(name="Jane", age=25, gender=GenderPydantic.FEMALE)
     pet1 = PetPydantic(name="Rex", age=5, species="Dog")
@@ -87,6 +92,7 @@ def test_pydantic_to_basic():
         members=[person, person2],
         name="Doe",
         pets={"dog": pet1, "cat": pet2, "bird": pet3},
+        master=master,
     )
     clan = ClanPydantic(families=[family], name="Smith")
 

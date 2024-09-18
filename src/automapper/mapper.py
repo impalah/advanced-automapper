@@ -2,8 +2,7 @@ from dataclasses import is_dataclass
 from enum import Enum
 from typing import Any, Callable, Dict, List, Optional, Type, get_type_hints
 
-from sqlalchemy.ext.declarative import DeclarativeMeta
-from sqlalchemy.orm import DeclarativeMeta, Mapped
+from sqlalchemy.orm import Mapped
 
 from automapper.default_mapper import DefaultMapper
 from automapper.functions import (
@@ -11,6 +10,8 @@ from automapper.functions import (
     get_inner_type,
     is_generic_dict,
     is_generic_list,
+    is_pydantic,
+    is_sqlalchemy,
 )
 from automapper.mapping_plugin import MappingPlugin
 from automapper.sql_alchemy_mapper import SqlAlchemyMapper
@@ -107,11 +108,14 @@ class Mapper:
             _type_: _description_
         """
 
+        # lambda t: isinstance(t, DeclarativeMeta): self.map,
+
         type_mapping: Dict[Callable[[Type], bool], Callable[[Any, Type], Any]] = {
             is_generic_list: lambda val, typ: self.map_list(val, get_inner_type(typ)),
             is_generic_dict: lambda val, typ: self.map_dict(val, get_inner_type(typ)),
             lambda t: is_dataclass(t): self.map,
-            lambda t: isinstance(t, DeclarativeMeta): self.map,
+            lambda t: is_pydantic(t): self.map,
+            lambda t: is_sqlalchemy(t): self.map,
             lambda _: isinstance(source_value, Enum): self.map_enum,
         }
 

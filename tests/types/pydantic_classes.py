@@ -24,6 +24,7 @@ class PetPydantic(BaseModel):
 
 
 class FamilyPydantic(BaseModel):
+    master: PersonPydantic
     members: List[PersonPydantic]
     name: str
     pets: Optional[Dict[str, PetPydantic]] = {}

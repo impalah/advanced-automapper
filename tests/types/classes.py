@@ -38,11 +38,19 @@ class Pet:
 
 
 class Family:
-    def __init__(self, members: List[Person], name: str, pets: Dict[str, Pet] = {}):
+    def __init__(
+        self,
+        members: List[Person],
+        name: str,
+        master: Person,
+        pets: Dict[str, Pet] = {},
+    ):
         self.members = members
         self.name = name
         self.pets = pets
+        self.master = master
 
+    master: Person
     members: List[Person]
     name: str
     pets: Dict[str, Pet]

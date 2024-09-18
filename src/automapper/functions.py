@@ -82,3 +82,17 @@ def get_fields_type(target_class: Type) -> Dict[str, Type]:
         target_fields[field] = field_type
 
     return target_fields
+
+
+def is_pydantic(obj):
+    """Returns True if obj is a pydantic model or an instance of a
+    pydantic model."""
+    cls = obj if isinstance(obj, type) else type(obj)
+    return hasattr(cls, "model_fields")
+
+
+def is_sqlalchemy(obj):
+    """Returns True if obj is a sqlalchemy model or an instance of a
+    sqlalchemy model."""
+    cls = obj if isinstance(obj, type) else type(obj)
+    return hasattr(cls, "__table__")

@@ -18,6 +18,8 @@ class FamilyAlchemy(Base):
     __tablename__ = "families"
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(50), nullable=False)
+    master: Mapped["PersonAlchemy"] = relationship("PersonAlchemy")
+
     # pets: Dict[str, PetAlchemy]
     members: Mapped[list["PersonAlchemy"]] = relationship(
         "PersonAlchemy", back_populates="family"

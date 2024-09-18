@@ -27,6 +27,7 @@ from .types.sqlalchemy_models import FamilyAlchemy, GenderAlchemy, PersonAlchemy
 def test_dataclass_to_pydantic():
 
     # Arrange
+    master = PersonDataclass(name="Chief", age=99, genero=GenderDataclass.OTHER)
     person = PersonDataclass(name="John", age=25, genero=GenderDataclass.MALE)
     person2 = PersonDataclass(name="Jane", age=25, genero=GenderDataclass.FEMALE)
     pet1 = PetDataclass(name="Rex", age=5, species="Dog")
@@ -36,6 +37,7 @@ def test_dataclass_to_pydantic():
         members=[person, person2],
         name="Doe",
         pets={"dog": pet1, "cat": pet2, "bird": pet3},
+        master=master,
     )
     clan = ClanDataclass(families=[family], name="Smith")
 
@@ -56,6 +58,7 @@ def test_dataclass_to_pydantic():
 def test_dataclass_to_sqlalchemy():
 
     # Arrange
+    master = PersonDataclass(name="Chief", age=99, genero=GenderDataclass.OTHER)
     person = PersonDataclass(name="John", age=25, genero=GenderDataclass.MALE)
     person2 = PersonDataclass(name="Jane", age=25, genero=GenderDataclass.FEMALE)
     pet1 = PetDataclass(name="Rex", age=5, species="Dog")
@@ -65,6 +68,7 @@ def test_dataclass_to_sqlalchemy():
         members=[person, person2],
         name="Doe",
         pets={"dog": pet1, "cat": pet2, "bird": pet3},
+        master=master,
     )
 
     # Act
@@ -91,6 +95,7 @@ def dataclass_to_sqlalchemy_simple():
 def test_dataclass_to_basic():
 
     # Arrange
+    master = PersonDataclass(name="Chief", age=99, genero=GenderDataclass.OTHER)
     person = PersonDataclass(name="John", age=25, genero=GenderDataclass.MALE)
     person2 = PersonDataclass(name="Jane", age=25, genero=GenderDataclass.FEMALE)
     pet1 = PetDataclass(name="Rex", age=5, species="Dog")
@@ -100,6 +105,7 @@ def test_dataclass_to_basic():
         members=[person, person2],
         name="Doe",
         pets={"dog": pet1, "cat": pet2, "bird": pet3},
+        master=master,
     )
     clan = ClanDataclass(families=[family], name="Smith")
 

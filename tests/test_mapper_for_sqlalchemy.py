@@ -27,11 +27,13 @@ from .types.sqlalchemy_models import FamilyAlchemy, GenderAlchemy, PersonAlchemy
 def test_sqlalchemy_to_dataclass():
 
     # Arrange
+    master = PersonAlchemy(name="Chief", age=99, gender=GenderAlchemy.OTHER)
     person = PersonAlchemy(name="John", age=25, gender=GenderAlchemy.MALE)
     person2 = PersonAlchemy(name="Jane", age=25, gender=GenderAlchemy.FEMALE)
     family = FamilyAlchemy(
         members=[person, person2],
         name="Doe",
+        master=master,
     )
 
     # Act
@@ -49,11 +51,13 @@ def test_sqlalchemy_to_dataclass():
 def test_sqlalchemy_to_basic():
 
     # Arrange
+    master = PersonAlchemy(name="Chief", age=99, gender=GenderAlchemy.OTHER)
     person = PersonAlchemy(name="John", age=25, gender=GenderAlchemy.MALE)
     person2 = PersonAlchemy(name="Jane", age=25, gender=GenderAlchemy.FEMALE)
     family = FamilyAlchemy(
         members=[person, person2],
         name="Doe",
+        master=master,
     )
 
     # Act
@@ -70,11 +74,13 @@ def test_sqlalchemy_to_basic():
 def test_sqlalchemy_to_pydantic():
 
     # Arrange
+    master = PersonAlchemy(name="Chief", age=99, gender=GenderAlchemy.OTHER)
     person = PersonAlchemy(name="John", age=25, gender=GenderAlchemy.MALE)
     person2 = PersonAlchemy(name="Jane", age=25, gender=GenderAlchemy.FEMALE)
     family = FamilyAlchemy(
         members=[person, person2],
         name="Doe",
+        master=master,
     )
 
     # Act

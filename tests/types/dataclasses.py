@@ -26,6 +26,7 @@ class PetDataclass:
 
 @dataclasses.dataclass
 class FamilyDataclass:
+    master: PersonDataclass
     members: List[PersonDataclass]
     name: str
     pets: Optional[Dict[str, PetDataclass]] = dataclasses.field(default_factory=dict)
