@@ -55,6 +55,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#automapper.functions.get_inner_type"><code class="docutils literal notranslate"><span class="pre">get_inner_type()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#automapper.functions.is_generic_dict"><code class="docutils literal notranslate"><span class="pre">is_generic_dict()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#automapper.functions.is_generic_list"><code class="docutils literal notranslate"><span class="pre">is_generic_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automapper.functions.is_pydantic"><code class="docutils literal notranslate"><span class="pre">is_pydantic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automapper.functions.is_sqlalchemy"><code class="docutils literal notranslate"><span class="pre">is_sqlalchemy()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -134,6 +136,20 @@
 <dt>Returns:</dt><dd><p>bool: _description_</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="automapper.functions.is_pydantic">
+<span class="sig-prename descclassname"><span class="pre">automapper.functions.</span></span><span class="sig-name descname"><span class="pre">is_pydantic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#automapper.functions.is_pydantic" title="Link to this definition"></a></dt>
+<dd><p>Returns True if obj is a pydantic model or an instance of a
+pydantic model.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="automapper.functions.is_sqlalchemy">
+<span class="sig-prename descclassname"><span class="pre">automapper.functions.</span></span><span class="sig-name descname"><span class="pre">is_sqlalchemy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#automapper.functions.is_sqlalchemy" title="Link to this definition"></a></dt>
+<dd><p>Returns True if obj is a sqlalchemy model or an instance of a
+sqlalchemy model.</p>
 </dd></dl>
 
 </section>
