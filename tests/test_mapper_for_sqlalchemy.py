@@ -21,7 +21,9 @@ from .types.pydantic_classes import (
     PersonPydantic,
     PetPydantic,
 )
-from .types.sqlalchemy_models import FamilyAlchemy, GenderAlchemy, PersonAlchemy
+from .types.sqlalchemy.family_alchemy import FamilyAlchemy
+from .types.sqlalchemy.person_alchemy import GenderAlchemy, PersonAlchemy
+from .types.sqlalchemy.pet_alchemy import PetAlchemy
 
 
 def test_sqlalchemy_to_dataclass():
