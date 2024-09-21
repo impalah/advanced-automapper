@@ -83,17 +83,19 @@ class Mapper:
 
         # TODO: use dictionary comprehension (PEP 274)
         for field_name, field_type in source_fields.items():
-            source_value = getattr(source, field_name, None)
+
             target_field_name = self.custom_mappings.get(type(source), {}).get(
                 field_name, field_name
             )
 
-            if target_field_name in target_fields:
-                target_field_type = target_fields[target_field_name]
+            if target_field_name not in target_fields:
+                continue
 
-                target_kwargs[target_field_name] = self._map_field(
-                    source_value, target_field_type
-                )
+            source_value = getattr(source, field_name, None)
+            target_field_type = target_fields[target_field_name]
+            target_kwargs[target_field_name] = self._map_field(
+                source_value, target_field_type
+            )
 
         return target_class(**target_kwargs)
 
