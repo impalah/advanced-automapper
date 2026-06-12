@@ -5,6 +5,7 @@ API
    :maxdepth: 2
 
    mapper
+   pynamodb_mapper
    types
    functions
 

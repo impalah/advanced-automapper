@@ -27,11 +27,11 @@ class PersonAlchemy(Base):
 
     family_id: Mapped[int] = mapped_column(Integer, ForeignKey("families.id"))
     family: Mapped[FamilyAlchemy] = relationship(
-        "FamilyAlchemy", back_populates="members"
+        "FamilyAlchemy", back_populates="members", overlaps="master"
     )
 
     families: Mapped[List["FamilyAlchemy"]] = relationship(
-        "FamilyAlchemy", back_populates="master"
+        "FamilyAlchemy", back_populates="master", overlaps="family,members"
     )
 
     def __repr__(self):

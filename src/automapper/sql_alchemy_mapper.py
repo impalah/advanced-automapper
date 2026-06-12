@@ -1,6 +1,4 @@
-from typing import Any, Dict, Type, get_type_hints
-
-from sqlalchemy.orm import class_mapper
+from typing import Any, get_type_hints
 
 from automapper.functions import is_sqlalchemy
 from automapper.mapping_plugin import MappingPlugin
@@ -27,7 +25,7 @@ class SqlAlchemyMapper(MappingPlugin):
 
         # return isinstance(source, DeclarativeMeta)
 
-    def get_source_fields(self, source: Any) -> Dict[str, Type]:
+    def get_source_fields(self, source: Any) -> dict[str, type]:
 
         return get_type_hints(type(source))
         # return {key: value for key, value in source.__mapper__.c.items()}

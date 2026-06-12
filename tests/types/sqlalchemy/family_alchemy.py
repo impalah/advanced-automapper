@@ -31,7 +31,7 @@ class FamilyAlchemy(Base):
 
     # pets: Dict[str, PetAlchemy]
     members: Mapped[list["PersonAlchemy"]] = relationship(
-        "PersonAlchemy", back_populates="family"
+        "PersonAlchemy", back_populates="family", overlaps="master"
     )
 
     def __repr__(self):

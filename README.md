@@ -4,19 +4,68 @@ Object automapper based on type hints.
 
 ## Installation
 
-Using pip:
-
 ```bash
 pip install advanced-automapper
+# or with uv:
+uv add advanced-automapper
 ```
 
-Using poetry
+## Instantiation pattern
 
-```bash
-poetry add advanced-automapper
+Each `Mapper` instance owns its state independently (plugin list and custom
+field renames). **Never share a `Mapper` across tests** — create a fresh
+instance per test to prevent mapping leakage.
+
+For production use, create and configure a **single instance at application
+startup** and reuse it throughout:
+
+```python
+from automapper import Mapper
+
+def build_mapper() -> Mapper:
+    m = Mapper()
+    m.add_custom_mapping(PersonORM, "full_name", "name")
+    return m
+
+app_mapper = build_mapper()  # configure once, reuse everywhere
 ```
 
-## Get started
+### FastAPI / lifespan example
+
+```python
+from contextlib import asynccontextmanager
+from typing import Annotated
+from fastapi import FastAPI, Depends
+from automapper import Mapper
+
+_mapper: Mapper | None = None
+
+def get_mapper() -> Mapper:
+    assert _mapper is not None
+    return _mapper
+
+MapperDep = Annotated[Mapper, Depends(get_mapper)]
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    global _mapper
+    _mapper = Mapper()
+    _mapper.add_custom_mapping(CourseORM, "created_by", "owner_id")
+    yield
+    _mapper = None
+
+app = FastAPI(lifespan=lifespan)
+```
+
+### Testing
+
+```python
+def test_mapping():
+    m = Mapper()  # fresh instance — no shared state with other tests
+    m.add_custom_mapping(PersonORM, "full_name", "name")
+    result = m.map(orm_obj, PersonDomain)
+    assert result.name == orm_obj.full_name
+```
 
 It is important to note that PyAutomapper requieres that both origin and destination classes have have type hints to define the type for every field.
 

@@ -1,9 +1,9 @@
-from typing import Dict, Optional, Type, Union, get_args, get_type_hints
+from typing import Optional, Union, get_args, get_type_hints
 
 from sqlalchemy.orm import Mapped
 
 
-def get_inner_type(type_hint: Type) -> Type:
+def get_inner_type(type_hint: type) -> type:
     """Get the inner type of a generic type
 
     Args:
@@ -24,7 +24,7 @@ def get_inner_type(type_hint: Type) -> Type:
         return type_hint.__args__[-1]
 
 
-def is_generic_list(type_hint: Type) -> bool:
+def is_generic_list(type_hint: type) -> bool:
     """Check if the type hint is a generic list
 
     Args:
@@ -39,18 +39,18 @@ def is_generic_list(type_hint: Type) -> bool:
     is_list = False
 
     if hasattr(type_hint, "__origin__"):
-        is_origin_list = type_hint.__origin__ == list
+        is_origin_list = type_hint.__origin__ is list
         is_mapped_list = (
-            type_hint.__origin__ == Mapped
+            type_hint.__origin__ is Mapped
             and len(type_hint.__args__) > 0
-            and type_hint.__args__[0].__origin__ == list
+            and type_hint.__args__[0].__origin__ is list
         )
         is_list = is_origin_list or is_mapped_list
 
     return is_list
 
 
-def is_generic_dict(type_hint: Type) -> bool:
+def is_generic_dict(type_hint: type) -> bool:
     """Check if the type hint is a generic dict
 
     Args:
@@ -60,10 +60,10 @@ def is_generic_dict(type_hint: Type) -> bool:
         bool: _description_
     """
 
-    return hasattr(type_hint, "__origin__") and type_hint.__origin__ == dict
+    return hasattr(type_hint, "__origin__") and type_hint.__origin__ is dict
 
 
-def get_fields_type(target_class: Type) -> Dict[str, Type]:
+def get_fields_type(target_class: type) -> dict[str, type]:
     """Return the fields of a class with their types
 
     Args:
@@ -96,3 +96,25 @@ def is_sqlalchemy(obj):
     sqlalchemy model."""
     cls = obj if isinstance(obj, type) else type(obj)
     return hasattr(cls, "__table__")
+
+
+def is_pynamodb(obj: object) -> bool:
+    """Returns True if *obj* is a PynamoDB Model class or instance.
+
+    The check is done by walking the MRO looking for
+    ``pynamodb.models.Model``.  If pynamodb is not installed, returns
+    ``False`` without raising an error so that this helper is safe to call
+    even when the optional ``pynamodb`` extra is not present.
+
+    Args:
+        obj: A class or an instance to test.
+
+    Returns:
+        True if *obj* is (or is an instance of) a PynamoDB Model.
+    """
+    try:
+        from pynamodb.models import Model  # noqa: PLC0415
+    except ImportError:
+        return False
+    cls = obj if isinstance(obj, type) else type(obj)
+    return isinstance(cls, type) and issubclass(cls, Model)

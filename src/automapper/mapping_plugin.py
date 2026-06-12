@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from typing import Dict, Type
 
 from automapper.types import TSource, TTarget
 
@@ -25,7 +24,7 @@ class MappingPlugin(ABC):
         pass
 
     @abstractmethod
-    def get_source_fields(self, source: TSource) -> Dict[str, Type]:
+    def get_source_fields(self, source: TSource) -> dict[str, type]:
         """Returns the fields of the source object
 
         Args:

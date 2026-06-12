@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Run quality checks and regenerate Sphinx documentation before every commit.
+# docs/ is cleaned first to remove stale files from renamed/deleted pages.
+# Files under docs/ are staged automatically if they changed.
+set -euo pipefail
+
+echo "[pre-commit] Running ruff linter..."
+uv run ruff check src/ tests/
+
+echo "[pre-commit] Running ruff formatter check..."
+uv run ruff format --check .
+
+echo "[pre-commit] Running mypy type checker..."
+uv run mypy src/
+
+echo "[pre-commit] Cleaning docs/ directory..."
+rm -rf docs/
+
+echo "[pre-commit] Building documentation..."
+uv run sphinx-build -q docs_source docs
+
+# Stage any docs changes so they are included in this commit.
+git add docs/
+
+echo "[pre-commit] All checks passed."
